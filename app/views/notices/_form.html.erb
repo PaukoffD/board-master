@@ -1,11 +1,52 @@
 <%= simple_form_for(@notice) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :notice %>
-  </div>
+        <div class="form-group">
+            <%= f.label "Тема:", class: 'control-label' %>
+            <%= f.text_field :notice, class: 'form-control', input_html: { maxlength: 60 }%>
+        </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+        <div class="form-group>
+            <%= f.label "Текст объявления:", class: 'control-label' %>
+            <%= f.text_area :text, class: 'form-control', rows: 3 %>
+        </div>
+
+		<div class="form-group">
+		<div class="col-sm-6">    
+            <%= f.label "Цена:", class: 'control-label' %>
+                
+		  <%= f.text_field :price, class: 'form-control' %>
+        </div>
+		 </div>
+		 
+		<div class="form-group">
+		<div class="col-sm-6">    
+            <%= f.label "Пользователь:", class: 'control-label' %>
+            <%= f.text_field :name, class: 'form-control', input_html: { maxlength: 20 } %>
+        </div>
+		</div>
+		
+		<div class="form-group">
+            <%= f.label "Email:", class: 'control-label' %>
+            <%= f.text_field :email, class: 'form-control', input_html: { maxlength: 20 } %>
+        </div>
+		
+		<div class="form-group">
+            <%= f.label "Телефон:", class: 'control-label' %>
+            <%= f.text_field :phone, class: 'form-control', input_html: { maxlength: 10 } %>
+        </div>
+		
+		<div class="form-group">
+        <%= f.label " Фото:", class: 'col-sm-2 control-label'  %>
+        <div class="col-sm-6">
+            <%= f.file_field :avatar %>
+        </div>
+       </div>
+	</br>
+	   <div class="form-group">
+            <%= f.label "Срок объявления:", class: 'control-label' %>
+            <%= f.text_field :storage_ads, class: 'form-control', input_html: { maxlength: 3 } %>
+        </div>
+		
+        <%= f.submit 'Запомнить', class: 'btn btn-primary' %>
 <% end %>

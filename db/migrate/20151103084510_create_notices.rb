@@ -4,7 +4,7 @@ class CreateNotices < ActiveRecord::Migration
       t.string :notice
       t.text :text
 	  t.integer :price
-	  t.string :city
+	  t.integer :city
 	  t.integer :user_id
 	  t.string :name
 	  t.string :email

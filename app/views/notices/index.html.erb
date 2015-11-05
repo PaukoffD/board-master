@@ -1,27 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Notices</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Notice</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @notices.each do |notice| %>
-      <tr>
-        <td><%= notice.notice %></td>
-        <td><%= link_to 'Show', notice %></td>
-        <td><%= link_to 'Edit', edit_notice_path(notice) %></td>
-        <td><%= link_to 'Destroy', notice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h1>Доска объявлений</h1>
 
 <br>
 
 <%= link_to 'New Notice', new_notice_path, :class => 'btn btn-primary' %>
+<table class="table table-striped table-hover ">
+
+<h4>Последние объявления</h4>
+ <thead>
+    <tr>
+	<th width="10%">Фото</th>
+	<th width="40%">Объявление</th>
+    <th width="10%">Фото</th>
+	<th width="40%"><center>Объявление</center></th>
+     </tr>
+  </thead>
+  
+    <tbody>
+  <% for notice in @notices %>
+    <tr>
+      <td>
+	 <div class='icon'><%= image_tag(notice.avatar.url(:thumb), class: 'avatar', :size => 30) %></div>
+	 </td>
+	  
+	  
+	  <td><h5><%= link_to h(notice.notice), notice_path(notice.id) %> </td>
+	
+	  <td>
+	
+	 
+	 <div class='icon'><%= image_tag(notice.avatar.url(:thumb), class: 'avatar', :size => 30) %></div>
+	 </td>
+	  
+	  
+	  <td><h5><%= link_to h(notice.notice), notice_path(notice.id) %> </td>
+	  </br> 
+	  
+	  
+	  
+      
+    </tr>
+  <% end %>
+   </tbody>
+</table>
+
+
+ 
+
+
