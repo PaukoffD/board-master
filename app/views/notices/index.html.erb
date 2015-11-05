@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
-
+<div class="navbar-form navbar-right"><%= link_to 'Дать объявление', new_notice_path, :class => 'btn btn-primary' %></div>
 <h1>Доска объявлений</h1>
 
-<br>
 
-<%= link_to 'New Notice', new_notice_path, :class => 'btn btn-primary' %>
+
+
 <table class="table table-striped table-hover ">
 
-<h4>Последние объявления</h4>
  <thead>
     <tr>
 	<th width="10%">Фото</th>
@@ -18,10 +17,12 @@
   </thead>
   
     <tbody>
+ <h5>Последние объявления</h5>
   <% for notice in @notices %>
+ 	
     <tr>
       <td>
-	 <div class='icon'><%= image_tag(notice.avatar.url(:thumb), class: 'avatar', :size => 30) %></div>
+	 <div class='icon'><%= image_tag(notice.avatar.url(:thumb), class: 'avatar', :size => 20) %></div>
 	 </td>
 	  
 	  
@@ -35,12 +36,8 @@
 	  
 	  
 	  <td><h5><%= link_to h(notice.notice), notice_path(notice.id) %> </td>
-	  </br> 
 	  
-	  
-	  
-      
-    </tr>
+	 </tr>
   <% end %>
    </tbody>
 </table>
