@@ -1,0 +1,40 @@
+<table class="table table-striped table-hover ">
+
+ <thead>
+    <tr>
+	<th width="10%">Фото</th>
+	<th width="40%">Объявление</th>
+    <th width="10%">Фото</th>
+	<th width="40%"><center>Объявление</center></th>
+     </tr>
+  </thead>
+  
+    <tbody>
+ <h5>Последние объявления</h5>
+ <% i=0 %>
+  <%  @notices.each do |notice|%>
+ 	
+    <tr>
+      <td>
+	 <div class='icon'><%= image_tag(notice.avatar.url(:thumb), class: 'avatar', :size => 15) %></div>
+	 </td>
+	  
+	  
+	  <td><h5><%= link_to h(notice.notice), notice_path(notice.id) %> </td>
+	
+	  <td>
+<% if i=@notices.length %>  
+   <% break %>  
+<% else %>	 
+   i=i+1  
+<% end %>
+	 <div class='icon'><%= image_tag(@notices[i].avatar.url(:thumb), class: 'avatar', :size => 15) %></div>
+	 </td>
+	  
+	  
+	  <td><h5><%= link_to h(@notices[i].notice), notice_path(@notices[i].id) %> </td>
+	  
+	 </tr>
+  <% end %>
+   </tbody>
+</table>
