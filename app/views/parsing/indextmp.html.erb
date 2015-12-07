@@ -12,27 +12,23 @@
     <tbody>
  <h5>Последние объявления</h5>
  <% i=0 %>
-  <%  @notices.each do |notice|%>
+    <% @notices.each_slice(2) do |a, b| %>
  	
     <tr>
       <td>
-	 <div class='icon'><%= image_tag(notice.avatar.url(:thumb), class: 'avatar', :size => 15) %></div>
+	 <div class='icon'><%= image_tag(a.avatar.url(:thumb), class: 'avatar', :size => 15) %></div>
 	 </td>
 	  
 	  
-	  <td><h5><%= link_to h(notice.notice), notice_path(notice.id) %> </td>
+	  <td><h5><%= link_to h(a.notice), notice_path(a.id) %> </td>
 	
 	  <td>
-<% if i=@notices.length %>  
-   <% break %>  
-<% else %>	 
-   i=i+1  
-<% end %>
-	 <div class='icon'><%= image_tag(@notices[i].avatar.url(:thumb), class: 'avatar', :size => 15) %></div>
+
+	 <div class='icon'><%= image_tag(b.avatar.url(:thumb), class: 'avatar', :size => 15) %></div>
 	 </td>
 	  
 	  
-	  <td><h5><%= link_to h(@notices[i].notice), notice_path(@notices[i].id) %> </td>
+	  <td><h5><%= link_to h(b.notice), notice_path(b.id) %> </td>
 	  
 	 </tr>
   <% end %>

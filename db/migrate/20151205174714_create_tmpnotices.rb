@@ -1,6 +1,6 @@
 class TmpNotices < ActiveRecord::Migration
   def change
-  create_table :tmp_notices do |t|
+  create_table :tmpnotices do |t|
       t.string :notice
       t.text :text
 	  t.integer :price
