@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207192711) do
+ActiveRecord::Schema.define(version: 20151208105809) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -32,7 +32,29 @@ ActiveRecord::Schema.define(version: 20151207192711) do
     t.string   "notice"
     t.text     "text"
     t.integer  "price"
-    t.string   "city"
+    t.integer  "city"
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "storage_ads"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "state",               default: "pending_review"
+    t.integer  "views_count",         default: 0
+    t.string   "slug"
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.integer  "category_id"
+  end
+
+  create_table "tmp_notices", force: :cascade do |t|
+    t.string   "notice"
+    t.text     "text"
+    t.integer  "price"
+    t.integer  "city"
     t.integer  "user_id"
     t.string   "name"
     t.string   "email"

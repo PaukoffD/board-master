@@ -14,8 +14,12 @@ class NoticesController < ApplicationController
 
   # GET /notices/new
   def new
+  
     @notice = Notice.new
-  end
+	category = Category.all.map { |category| [category.name] }
+    #options_for_select(category_array) 
+end
+  
 
   # GET /notices/1/edit
   def edit

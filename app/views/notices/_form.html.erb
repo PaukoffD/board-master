@@ -1,4 +1,4 @@
-<%= simple_form_for(@notice) do |f| %>
+<%= simple_form_for [@category, @notice] do |f| %>
   <%= f.error_notification %>
 
   <form class="form-inline" role="form">
@@ -11,6 +11,14 @@
             <%= f.label "Текст объявления:", class: 'control-label' %>
             <%= f.text_area :text, class: 'form-control', rows: 3 %>
         </div>
+		
+		<div class="form-group">
+		<div class="col-sm-4">    
+            <%= f.label "Категория:", class: 'control-label' %>
+                
+		  <%= f.association :category, include_blank: false  %>
+        </div>
+		
 
 		<div class="form-group">
 		<div class="col-sm-4">    

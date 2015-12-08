@@ -29,7 +29,16 @@ require 'open-uri'
 	#@notice.save
   #end 
  page.css(".ms_child").each do |link|
-   puts link.text
+   #puts link.text
+   #st=link.text
+   c=Category.new
+   st = link.at_css("tr[4] td[1] div a").text
+    puts link.at_css("tr[4] td[1] div a").text
+   c.name=st
+   #//*[@id="new_content"]/div[3]/div/div/div/div/table/tbody/tr[3]/td[1]/div/a
+   puts c.name
+   c.save
+   #puts //*[@id="new_content"]/div[3]/div/div/div/div/table/tbody/tr[1]/td[1]/div/a
   end 
   #puts page.at_css(".ob_rubrika").text 
    
