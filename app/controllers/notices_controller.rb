@@ -17,6 +17,7 @@ class NoticesController < ApplicationController
   
     @notice = Notice.new
 	category = Category.all.map { |category| [category.name] }
+	city = City.all.map { |category1| [category1.name] }
     #options_for_select(category_array) 
 end
   
@@ -29,7 +30,14 @@ end
   # POST /notices.json
   def create
     @notice = Notice.new(notice_params)
-
+ if  params[:searchng][:w]!=nil
+   c=City.new
+   c.city= params[:searchng][:w]
+   c.save
+   c=City.last
+ @notice.city_id=c.id
+ end
+ 
     respond_to do |format|
       if @notice.save
         format.html { redirect_to @notice, notice: 'Notice was successfully created.' }

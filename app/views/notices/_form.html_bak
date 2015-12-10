@@ -20,23 +20,17 @@
 
             <%= f.label "Цена:", class: 'control-label' %>
                 
-		    <%= f.text_field :price, class: 'form-control' %>
+		  <%= f.text_field :price, class: 'form-control' %>
         
 		
-		   <p>* если не числовое значение, то цена=0</p>
-            <%= f.association :city, label: "Город: ",  include_blank: true %>
-			<p>* если вашего города нет в списке введите его в поле снизу</p>
-			<%= simple_fields_for  :searchng do |q| %>
-               <%= q.error_notification %>
-               <%= q.text_field :w,  class: 'form-control' %>
-			   
-            <% end %>
+		
+            <%= f.association :city, label: "Город:  " %>
         
 				
 		
-            <%= f.label "Автор:", class: 'control-label' %>
+            <%= f.label "Автор:", class: 'col-sm-2 control-label' %>
             <%= f.text_field :name, class: 'form-control', input_html: { maxlength: 20 } %>
-            
+        
 		
 		
 		
@@ -61,13 +55,16 @@
 	</br>
 	
 	  
-            
-            <%= f.input :storage_ads, label: "Срок объявления:  ", collection: 30..120, class: 'form-control', input_html: { maxlength: 3 } %>
+            <%= f.label "Срок объявления:", class: 'control-label' %>
+            <%= f.text_field :storage_ads, class: 'form-control', input_html: { maxlength: 3 } %>
    
 	 
 	 
-		
+		<div class="form-group">
+        <div class="col-sm-offset-2 col-sm-6">
            <%= f.submit 'Запомнить', class: 'btn btn-primary' %>
-             
+        </div>
+    </div>
+        
 		
 <% end %>
