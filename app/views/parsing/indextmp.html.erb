@@ -21,7 +21,7 @@
     <tbody>
  <h5>Последние объявления</h5>
  <% i=0 %>
- <% form_tag parse_tmp_path, :method => :put do%>
+ <% form_tag 'indextmp' %>
     <% @notices.each_slice(2) do |a, b| %>
  	
     <tr>
@@ -38,11 +38,11 @@
 	  
 	  <td> 
 	 
-	    <!-- <%= check_box_tag "notice_ids[]", a.id %>  -->
+	    <%= check_box_tag "notice_ids[]", a.id %> 
 	  
 	  </td>
 	  
-<% if b!=nil%>	
+  <% if b!=nil%>	
 	 
 	 <td>
 	  
@@ -63,9 +63,9 @@
 	 <% end %>  
 	 </tr>
 	 
-   <% end %>
-   <% submit_tag "Mark"%>
-  <% end %>
+    <% end %>
+   <% submit_tag "Mark" %>
+
   
    </tbody>
 </table>
