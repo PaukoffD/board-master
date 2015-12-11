@@ -49,7 +49,9 @@ require 'open-uri'
   end
   
   def indextmp
+  
   @notices = Tmpnotice.all
+  #loading
   #puts page.at_css(".ob_rubrika").text 
    
     #@topics = Topic.order(:created_at).reorder('id DESC').all.page(params[:page])
@@ -58,6 +60,16 @@ require 'open-uri'
 	
   end
   
+ def loadtmp
+ loading
+  @notices = Tmpnotice.all
+  #puts page.at_css(".ob_rubrika").text 
+   
+    #@topics = Topic.order(:created_at).reorder('id DESC').all.page(params[:page])
+    #topic=Topic.order(:created_at).reorder('id DESC').last
+	#@forum = Forum.find(topic.forum_id)
+	
+  end 
   
   
 end

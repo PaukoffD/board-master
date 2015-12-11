@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :categories
+  resources :tmpnotices
   resources :notices
   resources :cities
   devise_for :users
@@ -13,4 +14,5 @@ Rails.application.routes.draw do
   get 'tools', to: 'tools#index'
   get 'parsing', to: 'parsing#index'
   get 'parse_tmp', to: 'parsing#indextmp'
+  get 'load_tmp', to: 'parsing#loadtmp'
 end
