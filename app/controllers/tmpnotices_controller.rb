@@ -21,8 +21,9 @@ class TmpnoticesController < ApplicationController
   end
 
    def indextmp
-  load
-  @notices = Tmpnotice.all
+   Tmpnotice.where('id' => params[:notice_ids]).update_all({:choice => true})
+   Tmpnotice.where('choice' => nil).delete_all
+  #@notices = Tmpnotice.all
   #loading
   #puts page.at_css(".ob_rubrika").text 
    

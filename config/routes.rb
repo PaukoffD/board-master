@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :categories
  resources :tmpnotices do
     collection do
-      post 'mass_edit'
+      post 'indextmp'
       put 'indextmp'
     end
   end
@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   get 'tools', to: 'tools#index'
   get 'parsing', to: 'parsing#index'
   get 'parse_tmp', to: 'parsing#indextmp', :collection => { :update => :put }
+ 
   get 'load_tmp', to: 'parsing#loadtmp'
 end

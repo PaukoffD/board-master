@@ -72,7 +72,7 @@ require 'open-uri'
 	
   end 
  
- def marktmp
+ def update
  loading
   @notices = Tmpnotice.all
   #puts page.at_css(".ob_rubrika").text 
