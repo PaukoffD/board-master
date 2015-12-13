@@ -49,7 +49,7 @@ require 'open-uri'
   end
   
   def indextmp
-  
+  #load
   @notices = Tmpnotice.all
   #loading
   #puts page.at_css(".ob_rubrika").text 
@@ -64,12 +64,36 @@ require 'open-uri'
  loading
   @notices = Tmpnotice.all
   #puts page.at_css(".ob_rubrika").text 
-   
+   loas
     #@topics = Topic.order(:created_at).reorder('id DESC').all.page(params[:page])
-    #topic=Topic.order(:created_at).reorder('id DESC').last
-	#@forum = Forum.find(topic.forum_id)
+   Tmpnotice.update_all(choice=true, :id=> params[:notice_ids])
+	
+	
+	
+  end 
+ 
+ def marktmp
+ loading
+  @notices = Tmpnotice.all
+  #puts page.at_css(".ob_rubrika").text 
+   loas
+    #@topics = Topic.order(:created_at).reorder('id DESC').all.page(params[:page])
+   Tmpnotice.update_all(choice=true, :id=> params[:notice_ids])
+	
+	
 	
   end 
   
+  def update
+    respond_to do |format|
+      if @notice.update(notice_params)
+        format.html { redirect_to @notice, notice: 'Notice was successfully updated.' }
+        format.json { render :show, status: :ok, location: @notice }
+      else
+        format.html { render :edit }
+        format.json { render json: @notice.errors, status: :unprocessable_entity }
+      end
+    end
+  end
   
 end

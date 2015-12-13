@@ -1,27 +1,28 @@
-<div class="navbar-form navbar-right"><%= link_to 'закачать в базу...', load_tmp_path, :class => 'btn btn-primary' %></div>
 
 
 
 
 
 
+ <% form_tag indextmp_tmpnotices_path do %>
 <table class="table table-striped table-hover ">
 
  <thead>
-    <tr>
-	<th width="10%">Фото</th>
-	<th width="38%">Объявление</th>
-	<th width="2%"></th>
+  <tr>
     <th width="10%">Фото</th>
-	<th width="40%"><center>Объявление</center></th>
-	<th width="2%"></th>
-     </tr>
+    <th width="38%">Объявление</th>
+    <th width="2%"></th>
+    <th width="10%">Фото</th>
+    <th width="40%"><center>Объявление</center></th>
+    <th width="2%"></th>
+   </tr>
   </thead>
   
-    <tbody>
+ dhfhdfhfghfghfghfg 
  <h5>Последние объявления</h5>
- <% i=0 %>
- <% form_tag 'indextmp' %>
+
+
+  <%= submit_tag "123Mark" %>   
     <% @notices.each_slice(2) do |a, b| %>
  	
     <tr>
@@ -62,10 +63,12 @@
 	  
 	 <% end %>  
 	 </tr>
-	 
+	
     <% end %>
-   <% submit_tag "Mark" %>
-
+   
+ 
   
-   </tbody>
 </table>
+<%= submit_tag "Edit Checked" %>
+ <% end %>
+ <div class="navbar-form navbar-right"><%= link_to 'закачать в базу...', load_tmp_path, :class => 'btn btn-primary' %></div>
