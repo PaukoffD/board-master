@@ -15,8 +15,8 @@
     </div>
 <% end %>
 
- <nav class="navbar navbar-default" role="navigation">
-            <div class="container">
+ <nav class="navbar navbar-default  navbar-fixed-top">
+            <div class="container-fluid">
 
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
@@ -28,7 +28,11 @@
                     </button>
                     <%= link_to "ДОСКА // ОБЪЯВЛЕНИЙ", root_path, class: 'navbar-brand' %>
                 </div>
-				
+				<ul class="nav navbar-nav navbar-left">
+                 <li><%= link_to "| Категории", root_path %><span class="sr-only">(current)</span></a></li>
+                 <li><%= link_to "Правила", rules_path %><span class="sr-only">(current)</span></a></li>
+	             <li class="right"><%= link_to 'Поиск', root_path %><span class="sr-only">(current)</span></button></li>
+               </ul>
 				
 				
 
@@ -37,13 +41,20 @@
                     <ul class="nav navbar-nav navbar-right">
                          
                          <% if user_signed_in? %>
-                            <li><%= link_to current_user.email, edit_user_registration_path %></li>
+                            <li><%= link_to current_user.name, edit_user_registration_path %></li>
 							<li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
 							
-							 <li><%= link_to 'Posts', notices_path %></li>
-                             <li><%= link_to 'Администратор', rails_admin_path %></li>
-                             <li><%= link_to 'Категории', categories_path %></li>
-							 <li><%= link_to 'Tools', tools_path %></li>
+					     	 <li class="dropdown">
+                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Админ
+                              <span class="caret"></span></a>
+                                 <ul class="dropdown-menu">
+                                   <li><%= link_to 'Posts', notices_path %></li>
+                                  <li><%= link_to 'Администратор', rails_admin_path %></li>
+                                   <li><%= link_to 'Категории', categories_path %></li>
+								   <li><%= link_to 'Tools', tools_path %></li>
+                                </ul>
+						
+							 
                          <% else %>
                              <li><%= link_to 'Login', new_user_session_path %></li>
 							 <li><%= link_to 'Sign up', new_user_registration_path %></li>

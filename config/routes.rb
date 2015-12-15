@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   get 'tools', to: 'tools#index'
   get 'parsing', to: 'parsing#index'
   get 'parse_tmp', to: 'parsing#indextmp', :collection => { :update => :put }
- 
+  get 'rules', to: 'notices#rules'
   get 'load_tmp', to: 'parsing#loadtmp'
 end

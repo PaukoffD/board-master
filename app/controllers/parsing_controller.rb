@@ -8,7 +8,7 @@ require 'open-uri'
   
   
   # page = Nokogiri::HTML(open("http://msk.barahla.net/25.html"))
-    page = Nokogiri::HTML(open("http://msk.barahla.net/?page=4"))
+    page = Nokogiri::HTML(open("http://msk.barahla.net/?page=17"))
    #page2 = Nokogiri::HTML(open("http://msk.barahla.net/?page=5"))
    #page3 = Nokogiri::HTML(open("http://msk.barahla.net/?page=6"))
    #page4 = Nokogiri::HTML(open("http://msk.barahla.net/?page=7"))
@@ -22,7 +22,10 @@ require 'open-uri'
    page.css(".ob").each do |link|
     @notice=Tmpnotice.new
     @notice.notice=link.at_css(".ob_title").text
-	@notice.ref_img=link.at_css(".photo_preview img")['src']
+	s=link.at_css(".photo_preview")
+	if !s.name="td"
+	 @notice.ref_img=link.at_css(".photo_preview img")['src']
+	end 
 	@notice.ref_page=link.at_css(".ob_descr td a")['href']
 	@notice.name=link.at_css(".author").text
 	

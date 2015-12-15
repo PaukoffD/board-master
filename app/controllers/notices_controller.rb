@@ -1,18 +1,19 @@
 class NoticesController < ApplicationController
   before_action :set_notice, only: [:show, :edit, :update, :destroy]
 
-  # GET /notices
-  # GET /notices.json
+  
   def index
     @notices = Notice.all
   end
 
-  # GET /notices/1
-  # GET /notices/1.json
+  
   def show
   end
 
-  # GET /notices/new
+  def rules
+  end
+  
+  
   def new
   
     @notice = Notice.new

@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
+</br>
+</br>
+</br>
 <div class="navbar-form navbar-right"><%= link_to 'Дать объявление', new_notice_path, :class => 'btn btn-primary' %></div>
-<h1>Доска объявлений</h1>
+<h5>* все обьявления проходят модерацию...см. Правила</h5>
 
 
 
@@ -17,7 +20,7 @@
   </thead>
   
     <tbody>
- <h5>Последние объявления</h5>
+ <h4>Последние объявления</h4>
   <% @notices.each_slice(2) do |a, b| %>
  	
     <tr>
