@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
-</br>
-</br>
-</br>
+
 <div class="navbar-form navbar-right"><%= link_to 'Дать объявление', new_notice_path, :class => 'btn btn-primary' %></div>
 <h5>* все обьявления проходят модерацию...см. Правила</h5>
 
@@ -51,7 +49,7 @@
    </tbody>
 </table>
 
-
+ <%= paginate(@notices) %>
  
 
 

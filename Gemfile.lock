@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/amerine/acts_as_tree.git
+  revision: c1178fc302d4a66979c34639eab760a7abec187b
+  specs:
+    acts_as_tree (2.3.0)
+      activerecord (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -224,6 +231,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  acts_as_tree!
   babosa
   better_errors
   binding_of_caller

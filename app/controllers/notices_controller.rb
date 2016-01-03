@@ -3,7 +3,7 @@ class NoticesController < ApplicationController
 
   
   def index
-    @notices = Notice.all
+    @notices = Notice.all.page(params[:page])
   end
 
   
@@ -31,12 +31,12 @@ end
   # POST /notices.json
   def create
     @notice = Notice.new(notice_params)
- if  params[:searchng][:w]!=nil
+ if  params[:searchng][:w]!=""
    c=City.new
    c.city= params[:searchng][:w]
    c.save
    c=City.last
- @notice.city_id=c.id
+   @notice.city_id=c.id
  end
  
     respond_to do |format|

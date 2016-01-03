@@ -64,7 +64,15 @@
         </nav>
 
 
-
+<div class="container">
+  <% for cat in Category.roots %>
+    <button type="button" class="btn btn-default">
+	<ul>
+    <li><%= link_to h(cat.name), cat %></li>
+	</ul>
+	</button>
+  <% end %>
+  </div>
 
 
 

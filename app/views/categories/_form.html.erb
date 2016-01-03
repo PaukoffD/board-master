@@ -1,6 +1,12 @@
 <%= simple_form_for(@category) do |f| %>
   <%= f.error_notification %>
-
+  
+<div class="field">
+    <%= f.label :parent_id %><br>
+    <%= f.collection_select(:parent_id,  Category.order(:name), :id, :name, :include_blank => true) %>
+   
+  </div>
+  
   <div class="form-inputs">
     <%= f.input :name %>
   </div>
