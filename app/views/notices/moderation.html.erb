@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+
+
+
+ <%= form_tag indextmp_notices_path do %>
+<table class="table table-striped table-hover ">
+
+ <thead>
+    <tr>
+	<th width="10%">Фото</th>
+	<th width="48%">Объявление</th>
+	<th width="10%">Имя</th>
+	<th width="10%">Имейл</th>
+	<th width="10%">фон</th>
+	<th width="2%"></th>
+   
+     </tr>
+  </thead>
+  
+    <tbody>
+ <h4>Последние объявления</h4>
+  <% @notices.each do |a| %>
+ 	
+    <tr>
+     <td>
+	 <div class='icon'><%= image_tag(a.avatar.url(:thumb), class: 'avatar', :size => 15) %></div>
+	 </td>
+	  
+	  
+	  <td><h4><%= link_to h(a.notice), notice_path(a.id) %> </h4>
+	      <h6><%= link_to h(a.text), notice_path(a.id) %> </h6>
+	  </td>
+	  
+	 <td><h6><%= a.name %> </h6> </td>
+	<td><h6><%= a.email %> </h6> </td>
+	<td><h6><%= a.phone %> </h6> </td>
+	<td> 
+	 
+	    <%= check_box_tag "notice_ids[]", a.id %> 
+	  
+	  </td>
+	  
+	 </tr>
+  <% end %>
+   </tbody>
+</table>
+<%= submit_tag "Edit Checked" %>
+ <% end %>
+  <div class="navbar-form navbar-right"><%= link_to 'закачать в базу...', load_tmp_path, :class => 'btn btn-primary' %></div>
+ <%= paginate(@notices) %>
+ 
+
+

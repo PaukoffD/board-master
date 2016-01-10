@@ -3,9 +3,23 @@ class NoticesController < ApplicationController
 
   
   def index
-    @notices = Notice.all.page(params[:page])
+    @notices = Notice.visible.page(params[:page])
   end
 
+  def indextmp
+   Notice.where('id' => params[:notice_ids]).update_all({:state => "visible"})
+   #Tmpnotice.where('choice' => nil).delete_all
+  #@notices = Tmpnotice.all
+  #loading
+  #puts page.at_css(".ob_rubrika").text 
+   
+    #@topics = Topic.order(:created_at).reorder('id DESC').all.page(params[:page])
+    #topic=Topic.order(:created_at).reorder('id DESC').last
+	#@forum = Forum.find(topic.forum_id)
+	
+  end 
+  
+  
   
   def show
   end
@@ -13,6 +27,10 @@ class NoticesController < ApplicationController
   def rules
   end
   
+  def moderation
+   @notices =  Notice.moderated.page(params[:page])
+   
+  end
   
   def new
   

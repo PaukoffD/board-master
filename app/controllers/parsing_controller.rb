@@ -69,11 +69,12 @@ require 'open-uri'
   
  def loadtmp
  
-  @notices = Tmpnotice.all
+  @notices = Notice.moderated.all
   #puts page.at_css(".ob_rubrika").text 
-   loas
+  loas
     #@topics = Topic.order(:created_at).reorder('id DESC').all.page(params[:page])
-   Tmpnotice.update_all(choice=true, :id=> params[:notice_ids])
+  Notice.where('id' => params[:notice_ids]).update_all({:state => "visible"})
+ # Notice.where('choice' => nil).delete_all
 	
 	
 	
@@ -102,5 +103,19 @@ require 'open-uri'
       end
     end
   end
+  
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_notice
+      @notice = Tmpnotice.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def notice_params
+      params.require(:notice).permit!
+    end 
+  
+  
+  
   
 end

@@ -7,6 +7,7 @@ belongs_to :city
   validates_attachment_content_type :avatar, size: { in: 0..500.kilobytes }, :content_type => /\Aimage\/.*\Z/
   validates :notice, presence: true, length: { minimum: 5 }
   validates :text, presence: true, length: { minimum: 15 }
-  self.per_page = 10
-  
+  self.per_page = 40
+ scope :visible, -> { where :state => "visible" } 
+ scope :moderated, -> { where :state => "pending_review" }
 end
