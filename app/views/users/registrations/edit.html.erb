@@ -1,51 +1,47 @@
-<h2>Редактировать профиль<%= resource_name.to_s.humanize %></h2>
+</br>
+</br>
+</br>
+</br>
 
-   
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
-    <%= devise_error_messages! %>
 
-     <div class="form-group">
+
+<h2>Edit </h2>
+
+   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
+   <%= devise_error_messages! %>
+
+	<div class="form-group">
         <%= f.label :avatar, class: 'col-sm-2 control-label'  %>
         <div class="col-sm-6">
             <%= f.file_field :avatar %>
         </div>
     </div>
-
-
-    <div class="form-group">
+		
+	
+     <div class="form-group">
         <%= f.label :name, class: 'col-sm-2 control-label'  %>
         <div class="col-sm-6">
             <%= f.text_field :name, autofocus: true, class: 'form-control'  %>
         </div>
     </div>
 
-    <div class="form-group">
-        <%= f.label :is_female, "Gender", class: 'col-sm-2 control-label'  %>
-        <div class="col-sm-6">
-            <%= f.radio_button :is_female, true %> <%= f.label :is_female, "Female" %>
-            <%= f.radio_button :is_female, false %> <%= f.label :is_female, "Male" %>
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <%= f.label :date_of_birth, class: 'col-sm-2 control-label'  %>
-        <div class="col-sm-6">
-            <%= f.date_select :date_of_birth, start_year: 1920, end_year: 2000, class: 'form-control'  %>
-        </div>
-    </div>
-
+   
+    
     <div class="form-group">
         <%= f.label :email, class: 'col-sm-2 control-label'  %>
         <div class="col-sm-6">
             <%= f.email_field :email, class: 'form-control'  %>
         </div>
     </div>
+	
+	 <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
 
     <div class="form-group">
-        <%= f.label :password, class: 'col-sm-2 control-label'  %> <i>(leave blank if you don't want to change it)</i>
+        <%= f.label :password, class: 'col-sm-2 control-label'  %> </br> <i>(leave blank if you don't want to change it)</i>
         <div class="col-sm-6">
-            <%= f.password_field :password, autocomplete: "off", class: 'form-control'  %>
+            <%= f.password_field :password,   autocomplete: "off", class: 'form-control'   %>
         </div>
     </div>
 

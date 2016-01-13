@@ -1,9 +1,57 @@
 <p id="notice"><%= notice %></p>
 
+
+  <strong>Тема:</strong>
+ <p class="bg-info"> <%= @notice.notice %>
+</p>
 <p>
-  <strong>Notice:</strong>
-  <%= @notice.notice %>
+  <strong>Текст объявления:</strong>
+            <%= @notice.text %>
+</p>	
+
+<p>		
+   <strong>Категория:  </strong> 
+</p>
+<p>	   
+   <strong>Цена:</strong>   	
+   <%= @notice.price %>	
+</p>	
+<p>	  	
+   <strong>Город: </strong>   	     
 </p>
 
-<%= link_to 'Edit', edit_notice_path(@notice) %> |
-<%= link_to 'Back', notices_path %>
+<p>	        
+	<strong>Автор:</strong> 	
+    <%= @notice.name %>	
+</p>
+ <p>        
+   <strong>Email:</strong> 	
+    <%= @notice.email %>	     
+</p>
+ <p>  		
+ <strong>Телефон:</strong> 	
+    <%= @notice.phone %>			
+</p>
+ <p>				
+ <strong> Фото:</strong> 	
+    <%= @notice.phone %>				
+</p>  
+<p>        
+<strong>Срок объявления:  </strong> 	
+    <%= @notice.phone %>			
+</p>		
+		
+        
+		
+		
+		
+		
+          
+	
+    
+
+
+
+
+<%= link_to 'Редактировать', edit_notice_path(@notice) %> |
+<%= link_to 'Назад', notices_path %>
