@@ -1,29 +1,32 @@
 <p id="notice"><%= notice %></p>
+</br>
 
 <div class="navbar-form navbar-right"><%= link_to 'Дать объявление', new_notice_path, :class => 'btn btn-primary' %></div>
 <h5>* все обьявления проходят модерацию...см. Правила</h5>
 
-
-
+</br>
+</br>
 
 <table class="table table-striped table-hover ">
 
  <thead>
     <tr>
-	<th width="10%">Фото</th>
-	<th width="40%">Объявление</th>
-    <th width="10%">Фото</th>
-	<th width="40%"><center>Объявление</center></th>
+	<th width="7%">Фото</th>
+	<th width="26%">Объявление</th>
+    <th width="7">Фото</th>
+	<th width="26%"><center>Объявление</center></th>
+	 <th width="7%">Фото</th>
+	<th width="26%"><center>Объявление</center></th>
      </tr>
   </thead>
   
     <tbody>
  <h4>Последние объявления</h4>
-  <% @notices.each_slice(2) do |a, b| %>
+  <% @notices.each_slice(3) do |a, b, c| %>
  	
     <tr>
      <td>
-	 <div class='icon'><%= image_tag(a.avatar.url(:thumb), class: 'avatar', :size => 15) %></div>
+	 <div class='icon'><%= image_tag(a.avatar.url(:thumb), class: 'avatar', :size => "80") %></div>
 	 </td>
 	  
 	  
@@ -34,12 +37,24 @@
 	  <td>
 	
 	 <% if b!=nil%>
-	 <div class='icon'><%= image_tag(b.avatar.url(:thumb), class: 'avatar', :size => 15) %></div>
+	 <div class='icon'><%= image_tag(b.avatar.url(:thumb), class: 'avatar', :size => "80" ) %></div>
 	 </td>
 	  
 	  
 	  <td><h4><%= link_to h(b.notice), notice_path(b.id) %></h4>
           <h6><%= link_to h(b.text), notice_path(b.id) %> </h6>
+	  </td>
+	  
+	  <% end %>
+	  
+	   <td>
+	   <% if c!=nil%>
+	    <div class='icon'><%= image_tag(c.avatar.url(:thumb), class: 'avatar', :size => "80" ) %></div>
+	 </td>
+	  
+	  
+	  <td><h4><%= link_to h(c.notice), notice_path(c.id) %></h4>
+          <h6><%= link_to h(c.text), notice_path(c.id) %> </h6>
 	  </td>
 	  
 	  <% end %>

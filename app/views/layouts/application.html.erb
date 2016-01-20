@@ -29,7 +29,7 @@
   <!-- Collection of nav links, forms, and other content for toggling -->
   <div id="navbarCollapse" class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-left">
-                 <li><%= link_to " Категории", root_path %><span class="sr-only">(current)</span></a></li>
+                 <li><%= link_to " Категории", listcat_path %><span class="sr-only">(current)</span></a></li>
                  <li><%= link_to "Правила", rules_path %><span class="sr-only">(current)</span></a></li>
 	             <li class="right"><%= link_to 'Поиск', root_path %><span class="sr-only">(current)</span></button></li>
                </ul>
@@ -69,7 +69,7 @@
   <% for cat in Category.roots %>
     <button type="button" class="btn btn-default">
 	<ul>
-    <li><%= link_to h(cat.name), cat %></li>
+      <li><%= link_to cat.name, cat %></li>
 	</ul>
 	</button>
   <% end %>

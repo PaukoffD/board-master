@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   get 'parse_tmp', to: 'parsing#indextmp', :collection => { :update => :put }
   get 'rules', to: 'notices#rules'
   get 'load_tmp', to: 'parsing#loadtmp'
+  get 'listcat', to: 'categories#listcat'
   
 end

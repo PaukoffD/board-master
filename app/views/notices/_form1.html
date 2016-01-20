@@ -1,0 +1,73 @@
+<%= simple_form_for [@city,@category, @notice] do |f| %>
+  <%= f.error_notification %>
+
+  
+       
+            <%= f.label "Тема:", class: 'control-label' %>
+            <%= f.text_field :notice, class: 'form-control', input_html: { maxlength: 60 }%>
+      
+
+      
+            <%= f.label "Текст объявления:", class: 'control-label' %>
+            <%= f.text_area :text, class: 'form-control', rows: 3 %>
+      
+		</br>
+		
+		
+            <%= f.association :category, label: "Категория:  ",  include_blank: false, :group_by => :subcategory %>
+        
+		
+
+            <%= f.label "Цена:", class: 'control-label' %>
+                
+		    <%= f.text_field :price, class: 'form-control' %>
+        
+		
+		   <p>* если не числовое значение, то цена=0</p>
+            <%= f.association :city, label: "Город: ",  include_blank: true %>
+			<p>* если вашего города нет в списке введите его в поле снизу</p>
+			<%= simple_fields_for  :searchng do |q| %>
+               <%= q.error_notification %>
+               <%= q.text_field :w,  class: 'form-control' %>
+			   
+            <% end %>
+        
+				
+		
+            <%= f.label "Автор:", class: 'control-label' %>
+            <%= f.text_field :name, class: 'form-control', input_html: { maxlength: 20 } %>
+            
+		
+		
+		
+            <%= f.label "Email:", class: 'control-label' %>
+            <%= f.text_field :email, class: 'form-control', input_html: { maxlength: 20 } %>
+        
+		
+		
+		
+		
+            <%= f.label "Телефон:", class: 'control-label' %>
+            <%= f.text_field :phone, class: 'form-control', input_html: { maxlength: 10 } %>
+        
+		
+		</br>
+		</br>
+	
+        <%= f.label " Фото:", class: 'col-sm-2 control-label'  %>
+        
+            <%= f.file_field :avatar %>
+     
+	</br>
+	
+	  
+            
+            <%= f.input :storage_ads, label: "Срок объявления:  ", collection: 30..120, class: 'form-control', input_html: { maxlength: 3 } %>
+   
+	 
+	 
+		
+           <%= f.submit 'Запомнить', class: 'btn btn-primary' %>
+             
+		
+<% end %>

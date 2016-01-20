@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228125913) do
+ActiveRecord::Schema.define(version: 20160120124840) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20151228125913) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.integer  "parent_id"
+    t.integer  "count"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -43,12 +44,16 @@ ActiveRecord::Schema.define(version: 20151228125913) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "state",               default: "pending_review"
-    t.integer  "views_count",         default: 0
+    t.string   "state",                default: "pending_review"
+    t.integer  "views_count",          default: 0
     t.string   "slug"
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
     t.integer  "category_id"
+    t.string   "avatar1_file_name"
+    t.string   "avatar1_content_type"
+    t.integer  "avatar1_file_size"
+    t.datetime "avatar1_updated_at"
   end
 
   create_table "pages", force: :cascade do |t|

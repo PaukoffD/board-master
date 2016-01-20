@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= render 'form1'  %>
+<%= render 'form' %>
  
 		
           

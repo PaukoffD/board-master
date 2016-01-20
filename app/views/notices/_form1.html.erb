@@ -1,0 +1,69 @@
+<%= simple_form_for [@city,@category, @notice] do |f| %>
+  <%= f.error_notification %>
+
+  
+       
+            <%= f.label "Тема:", class: 'control-label' %>
+            <%= f.text_field :notice, class: 'form-control', input_html: { maxlength: 60 }, disabled: true %>
+      
+
+      
+            <%= f.label "Текст объявления:", class: 'control-label' %>
+            <%= f.text_area :text, class: 'form-control', rows: 3, disabled: true %>
+      
+		</br>
+		
+		 <%= f.label "Категория:", class: 'control-label' %>
+         <%= f.text_area :notice, class: 'form-control', disabled: true %>
+         
+        
+		
+
+            <%= f.label "Цена:", class: 'control-label' %>
+                
+		    <%= f.text_field :price, class: 'form-control', disabled: true %>
+        
+		
+		   
+           <%= f.label "Город:", class: 'control-label' %>
+         <%= f.text_area :notice, class: 'form-control', disabled: true %>
+		 
+			
+        
+				
+		
+            <%= f.label "Автор:", class: 'control-label' %>
+            <%= f.text_field :name, class: 'form-control', input_html: { maxlength: 20 }, disabled: true %>
+            
+		
+		
+		
+            <%= f.label "Email:", class: 'control-label' %>
+            <%= f.text_field :email, class: 'form-control', input_html: { maxlength: 20 }, disabled: true %>
+        
+		
+		
+		
+		
+            <%= f.label "Телефон:", class: 'control-label' %>
+            <%= f.text_field :phone, class: 'form-control', input_html: { maxlength: 15 }, disabled: true %>
+        
+		
+		</br>
+		</br>
+	
+        <%= f.label " Фото:", class: 'col-sm-2 control-label'  %>
+        
+            <%= f.file_field :avatar %>
+     
+	</br>
+	
+	  
+          <%= f.label "Срок объявления:  ", class: 'control-label' %>
+          <%= f.text_field :phone, class: 'form-control', input_html: { maxlength: 3 }, disabled: true %>   
+         
+	 
+
+             
+		
+<% end %>

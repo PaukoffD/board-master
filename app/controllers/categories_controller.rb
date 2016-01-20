@@ -12,6 +12,10 @@ class CategoriesController < ApplicationController
   def show
   end
 
+  def listcat
+   @categories = Category.all
+  end
+  
   # GET /categories/new
   def new
     @category = Category.new
