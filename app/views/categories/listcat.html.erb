@@ -4,7 +4,7 @@
  <% for cat in Category.roots %>
    
 	<ul>
-      <li><%=  cat.name %></li>
+      <li><h3><%=  cat.name %></h3></li>
 	</ul>
 	
   
@@ -12,17 +12,17 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-	  <th>Name</th>
-	  <th>Name</th>
+      <th></th>
+	  <th></th>
+	  <th></th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @categories.each do |category| %>
+    <% for category in cat.children %>
       <tr>
-	    <td><%= category.parent_id %></td>
+	    
         <td><%= category.name %></td>
        
       </tr>
