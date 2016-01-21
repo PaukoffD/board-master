@@ -3,13 +3,13 @@
 <h1>Категории</h1>
  <% for cat in Category.roots %>
    
-	<ul>
+	
       <li><h3><%=  cat.name %></h3></li>
-	</ul>
+	
 	
   
 
-<table>
+<table class="table table-striped table-hover ">
   <thead>
     <tr>
       <th></th>
@@ -20,11 +20,28 @@
   </thead>
 
   <tbody>
-    <% for category in cat.children %>
+ 
+    <% cat.children.each_slice(3) do |a,b,c| %>
       <tr>
 	    
-        <td><%= category.name %></td>
-       
+        <td><h4><%= a.name %></h4>
+		<%  a.children.each do |cat1| %>
+          <h5><%= cat1.name %></h5>
+		<% end %>  </td>
+		
+		<% if b!=nil%>
+		 <td><h4><%= b.name %></h4>
+		 <%  b.children.each do |cat1| %>
+          <h5><%= cat1.name %></h5>
+		 <% end %> </td> 
+		<% end %>  
+		
+		 <% if c!=nil%>
+		  <td><h4><%= c.name %></h4>
+		<%  c.children.each do |cat1| %>
+          <h5><%= cat1.name %></h5>
+		 <% end %>  </td>
+		<% end %>   
       </tr>
     <% end %>
   </tbody>
