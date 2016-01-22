@@ -6,8 +6,13 @@
 	
       <li><h3><%=  cat.name %></h3></li>
 	
-	
-  
+<% Category.walk_tree do |c1, level| %>
+  <%= link_to "#{'-'*level}#{c1.name}", category_path(c1) %><br />
+<% end %>
+ ______--------
+<% Category.first.walk_tree do |page, level| %>
+  <%= link_to "#{'-'*level}#{page.name}", category_path(page) %><br />
+<% end %> 
 
 <table class="table table-striped table-hover ">
   <thead>

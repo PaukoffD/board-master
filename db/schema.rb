@@ -11,17 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120124840) do
+ActiveRecord::Schema.define(version: 20160122074948) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "category_mainuser_id"
     t.integer  "subcategory"
     t.string   "slug"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "parent_id"
-    t.integer  "count"
+    t.integer  "count",                default: 0
   end
 
   create_table "cities", force: :cascade do |t|

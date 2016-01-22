@@ -7,15 +7,14 @@ class NoticesController < ApplicationController
   end
 
   def indextmp
-   Notice.where('id' => params[:notice_ids]).update_all({:state => "visible"})
-   #Tmpnotice.where('choice' => nil).delete_all
-  #@notices = Tmpnotice.all
-  #loading
-  #puts page.at_css(".ob_rubrika").text 
+  i=params[:notice_ids][0].to_i
+  @notice = Notice.find(i)
+  @cat= Category.find(@notice.category_id)
+  @cat.count=@cat.count+1
+  @cat.save
+
+ Notice.where('id' => params[:notice_ids]).update_all({:state => "visible"})
    
-    #@topics = Topic.order(:created_at).reorder('id DESC').all.page(params[:page])
-    #topic=Topic.order(:created_at).reorder('id DESC').last
-	#@forum = Forum.find(topic.forum_id)
 	
   end 
   
