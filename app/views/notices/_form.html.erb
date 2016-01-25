@@ -1,22 +1,23 @@
+</br>
 <%= simple_form_for [@city,@category, @notice] do |f| %>
   <%= f.error_notification %>
 
   
        
             <%= f.label "Тема:", class: 'control-label' %>
-            <%= f.text_field :notice, class: 'form-control', input_html: { maxlength: 60 }%>
+            <%= f.text_field :notice, class: 'form-control', input_html: { maxlength: 60 }, placeholder: "Не меньше 5 символов" %>
       
 
       
             <%= f.label "Текст объявления:", class: 'control-label' %>
-            <%= f.text_area :text, class: 'form-control', rows: 3 %>
+            <%= f.text_area :text, class: 'form-control', rows: 3 , placeholder: "Не меньше 5 символов"%>
       
 		</br>
 		
 		
-            <%= f.association :category, label: "Категория:  ",  include_blank: false, :group_by => :subcategory %>
-        
-		
+            <%= f.association :category, label: "Категория:  ", collection:Category.all.order(:parent_id),  include_blank: false, :group_by => :subcategory %>
+            <%= f.association :category, label: "Категория:  ", collection:Category.first.children,  include_blank: false, :group_by => :subcategory %>
+		<%= f.assosiation :category, collection:option_groups_from_collection_for_select(@category,:parent_id,  :name, :id, :name) %>
 
             <%= f.label "Цена:", class: 'control-label' %>
                 

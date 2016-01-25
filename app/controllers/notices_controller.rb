@@ -7,11 +7,14 @@ class NoticesController < ApplicationController
   end
 
   def indextmp
-  i=params[:notice_ids][0].to_i
+  for j in 0..params[:notice_ids].length-1
+  i=params[:notice_ids][j].to_i
   @notice = Notice.find(i)
   @cat= Category.find(@notice.category_id)
   @cat.count=@cat.count+1
+ 
   @cat.save
+  end
 
  Notice.where('id' => params[:notice_ids]).update_all({:state => "visible"})
    

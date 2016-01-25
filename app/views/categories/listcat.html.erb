@@ -31,20 +31,20 @@
 	    
         <td><h4><%= a.name %></h4>
 		<%  a.children.each do |cat1| %>
-          <h5><%= cat1.name %></h5>
+          <h5><%= cat1.name %>  <%= cat1.count%></h5>
 		<% end %>  </td>
 		
 		<% if b!=nil%>
 		 <td><h4><%= b.name %></h4>
 		 <%  b.children.each do |cat1| %>
-          <h5><%= cat1.name %></h5>
+          <h5><%= cat1.name %>  <%= cat1.count%></h5>
 		 <% end %> </td> 
 		<% end %>  
 		
 		 <% if c!=nil%>
 		  <td><h4><%= c.name %></h4>
 		<%  c.children.each do |cat1| %>
-          <h5><%= cat1.name %></h5>
+          <h5><%= cat1.name %>  <%= cat1.count%></h5>
 		 <% end %>  </td>
 		<% end %>   
       </tr>
