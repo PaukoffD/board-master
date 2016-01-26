@@ -1,3 +1,5 @@
+<% if user_signed_in? %>
+<% if current_user.admin %>
 <div class="container">
   <h2>TOOLS</h2>
   <div class="list-group">
@@ -19,3 +21,7 @@
     </div>
   </div>
 </div>
+<% end %>
+<% else %>
+  <p >Вы не авторизованы</p>
+<% end %>

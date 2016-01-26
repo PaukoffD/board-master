@@ -3,7 +3,8 @@
 </br>
 </br>
 
-
+<% if user_signed_in? %>
+<% if current_user.admin %>
 
 
 
@@ -78,4 +79,5 @@
 
  <% end %>
  <div class="navbar-form navbar-right"><%= link_to 'закачать в базу...', load_tmp_path, :class => 'btn btn-primary' %></div>
- 
+  <% end %>
+   <% end %>

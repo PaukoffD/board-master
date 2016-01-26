@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-
+<% if user_signed_in? %>
+<% if current_user.admin %>
 
 
  <%= form_tag indextmp_notices_path do %>
@@ -50,5 +51,5 @@
   
  <%= paginate(@notices) %>
  
-
-
+<% end %>
+<% end %>

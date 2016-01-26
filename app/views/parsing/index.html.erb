@@ -2,8 +2,11 @@
 </br>
 </br>
 </br>
-
+<% if user_signed_in? %>
+<% if current_user.admin %>
 
 здеся будет parsing.....
 <div class="navbar-form navbar-right"><%= link_to 'показать tmp', parse_tmp_path, :class => 'btn btn-primary' %></div>
-  
+ 
+<% end %>
+   <% end %> 

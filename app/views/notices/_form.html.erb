@@ -15,10 +15,16 @@
 		</br>
 		
 		
-            <%= f.association :category, label: "Категория:  ", collection:Category.all.order(:parent_id),  include_blank: false, :group_by => :subcategory %>
-            <%= f.association :category, label: "Категория:  ", collection:Category.first.children,  include_blank: false, :group_by => :subcategory %>
-		<%= f.assosiation :category, collection:option_groups_from_collection_for_select(@category,:parent_id,  :name, :id, :name) %>
-
+        <%= f.label "Категория:  ", class: 'control-label' %>
+		<%= f.select:category_id do %>
+		 <% Category.walk_tree do |c1, level| %>
+         <%=  "#{'-'*level}#{c1.name}" %>
+        
+         
+         <%= content_tag(:option, "#{'--'*level}#{c1.name}") %>
+       <% end %>
+       <% end %>
+             </br>
             <%= f.label "Цена:", class: 'control-label' %>
                 
 		    <%= f.text_field :price, class: 'form-control' %>
