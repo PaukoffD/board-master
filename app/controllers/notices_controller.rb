@@ -1,7 +1,11 @@
 class NoticesController < ApplicationController
   before_action :set_notice, only: [:show, :edit, :update, :destroy]
 
-  
+ def normalize_friendly_id(string)
+    string.to_slug.normalize.to_s
+ end
+
+ 
   def index
     @notices = Notice.visible.page(params[:page])
   end
@@ -51,6 +55,8 @@ end
   # POST /notices.json
   def create
     @notice = Notice.new(notice_params)
+	@notice.slug= normalize_friendly_id(@notice.notice)
+	loa
  if  params[:searchng][:w]!=""
    c=City.new
    c.city= params[:searchng][:w]
@@ -97,7 +103,7 @@ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_notice
-      @notice = Notice.find(params[:id])
+      @notice = Notice.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

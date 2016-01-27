@@ -12,6 +12,10 @@ belongs_to :city
   validates :notice, presence: true, length: { minimum: 5, too_short: "мало символов в заголовке" }
   validates :text, presence: true, length: { minimum: 5 }
   self.per_page = 40
+  
+ extend FriendlyId
+ friendly_id :notice, use: :slugged
+  
  scope :visible, -> { where :state => "visible" } 
  scope :moderated, -> { where :state => "pending_review" }
 end
