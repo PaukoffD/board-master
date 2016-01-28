@@ -28,6 +28,10 @@ class NoticesController < ApplicationController
   
   
   def show
+    @notice = Notice.friendly.find(params[:id])
+	#category = Category.all.map { |category| [category.name] }
+	#city = City.all.map { |category1| [category1.name] }
+    #options_for_select(category_array) 
   end
 
   def rules
@@ -56,7 +60,17 @@ end
   def create
     @notice = Notice.new(notice_params)
 	@notice.slug= normalize_friendly_id(@notice.notice)
-	loa
+	if notice_params['category_id'].match('----')
+	  s=notice_params['category_id'].delete('----')
+	 if  notice_params['category_id'].match('--')
+	   s=notice_params['category_id'].delete('--')
+	 else
+      s=notice_params['category_id']
+	 end
+	end 
+ @category = Category.find_by(name: s)
+  @notice.category_id= @category.id
+	
  if  params[:searchng][:w]!=""
    c=City.new
    c.city= params[:searchng][:w]

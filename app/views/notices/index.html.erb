@@ -30,7 +30,7 @@
 	 </td>
 	  
 	  
-	  <td><h4><%= link_to h(a.notice), notice_path(a.id) %> </h4>
+	  <td><h4><%= link_to h(a.notice), notice_path(a.slug) %> </h4>
 	      <h6><%= a.text %> </h6>
 	  </td>
 	
@@ -41,8 +41,8 @@
 	 </td>
 	  
 	  
-	  <td><h4><%= link_to h(b.notice), notice_path(b.id) %></h4>
-          <h6><%= link_to h(b.text), notice_path(b.id) %> </h6>
+	  <td><h4><%= link_to h(b.notice), notice_path(b.slug) %></h4>
+          <h6><%=  b.text %> </h6>
 	  </td>
 	  
 	  <% end %>
@@ -53,8 +53,8 @@
 	 </td>
 	  
 	  
-	  <td><h4><%= link_to h(c.notice), notice_path(c.id) %></h4>
-          <h6><%= link_to h(c.text), notice_path(c.id) %> </h6>
+	  <td><h4><%= link_to h(c.notice), notice_path(c.slug) %></h4>
+          <h6><%= c.text %> </h6>
 	  </td>
 	  
 	  <% end %>
