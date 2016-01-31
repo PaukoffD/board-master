@@ -6,7 +6,8 @@
        
             <%= f.label "Тема:", class: 'control-label' %>
             <%= f.text_field :notice, class: 'form-control', input_html: { maxlength: 60 }, placeholder: "Не меньше 5 символов" %>
-      
+            <%= f.label "Тэги:", class: 'control-label' %>
+            <%= f.text_field :tag_list, class: 'form-control',  placeholder: "Тэги вводить через запятую" %>
 
       
             <%= f.label "Текст объявления:", class: 'control-label' %>
