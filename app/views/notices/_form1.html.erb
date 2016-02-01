@@ -46,9 +46,38 @@
 		</br>
 		</br>
 	
-        <%= f.label " Фото:", class: 'col-sm-2 control-label'  %>
-        
-            <%= f.file_field :avatar %>
+	<table class="table table-striped table-hover ">
+
+ <thead>
+    <tr>
+	<th width="45%"></th>
+	<th width="45%"></th>
+	
+     </tr>
+  </thead>
+  
+    <tbody>
+ <h4>Фото</h4>
+  
+ 	
+    <tr>
+     <td>
+	 <% if @notice.avatar.url(:original)!=nil %>
+	 <div class='icon'><%= image_tag(@notice.avatar.url(:original), class: 'avatar', :size => "500") %></div>
+	 </td>
+	<% end %>	
+	
+	  <td>
+	 <% if @notice.avatar1.url(:original)!=nil %>
+	 <div class='icon'><%= image_tag(@notice.avatar1.url(:original), class: 'avatar', :size => "500" ) %></div>
+	 </td>
+	 	  
+	  <% end %>
+   </tr>	
+ </tbody>
+</table>	
+	
+ 
      
 	</br>
 	

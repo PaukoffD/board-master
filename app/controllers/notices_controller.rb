@@ -7,7 +7,7 @@ class NoticesController < ApplicationController
 
  
   def index
-    @notices = Notice.visible.page(params[:page])
+    @notices = Notice.order('created_at DESC').visible.page(params[:page])
   end
 
   def indextmp
@@ -67,6 +67,8 @@ end
 	 else
       s=notice_params['category_id']
 	 end
+	else
+      s=notice_params['category_id'] 
 	end 
  @category = Category.find_by(name: s)
   @notice.category_id= @category.id
