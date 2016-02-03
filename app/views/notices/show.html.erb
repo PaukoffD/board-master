@@ -9,6 +9,9 @@
 
 
 
-
+<% if user_signed_in? %>
+<% if current_user.admin %>
 <%= link_to 'Редактировать', edit_notice_path(@notice) %> |
+<% end %>
+<% end %>
 <%= link_to 'Назад', notices_path %>
