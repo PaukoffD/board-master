@@ -52,7 +52,7 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 
 gem 'paperclip', '~> 4.1'
-gem 'ckeditor'
+
 gem 'will_paginate'
 gem 'kaminari-bootstrap'
 gem 'simple_form'

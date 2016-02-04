@@ -7,7 +7,12 @@ class NoticesController < ApplicationController
 
  
   def index
-    @notices = Notice.order('created_at DESC').visible.page(params[:page])
+   if params[:tag]
+    @notices = Notice.tagged_with(params[:tag]).order('created_at DESC').visible.page(params[:page])
+   else
+     @notices = Notice.order('created_at DESC').visible.page(params[:page])
+   end
+  
   end
 
   def indextmp
