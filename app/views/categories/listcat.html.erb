@@ -4,7 +4,7 @@
  <% for cat in Category.roots %>
    
 	
-      <li><h3><%=  cat.name %></h3></li>
+      <li><h3><%= raw cat.tag_list %> <%= cat.count%></h3></li>
 	
 
 
@@ -25,7 +25,7 @@
 	    
         <td><h4><%= a.name %></h4>
 		<%  a.children.each do |cat1| %>
-          <h5><%= cat1.name %>  <%= cat1.count%></h5>
+          <h5><%= raw cat1.name %>  <%= cat1.count%></h5>
 		<% end %>  </td>
 		
 		<% if b!=nil%>
