@@ -5,7 +5,7 @@ extend ActsAsTree::TreeWalker
 
   acts_as_tree order: 'name'
   
- acts_as_taggable
+
  
   
 end
