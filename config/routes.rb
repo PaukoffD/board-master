@@ -31,5 +31,6 @@ Rails.application.routes.draw do
   get 'rules', to: 'notices#rules'
   get 'load_tmp', to: 'parsing#loadtmp'
   get 'listcat', to: 'categories#listcat'
+  get 'tags/:tag', to: 'notices#index', as: :tag
   
 end

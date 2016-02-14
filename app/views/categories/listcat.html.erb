@@ -4,7 +4,7 @@
  <% for cat in Category.roots %>
    
 	
-      <li><h3><%=  cat.name %></h3></li>
+      <li><h3><%=  link_to cat.name, notices_path(category_id: cat.id) %> <%= cat.count%></h3></li>
 	
 
 
@@ -23,22 +23,22 @@
     <% cat.children.each_slice(3) do |a,b,c| %>
       <tr>
 	    
-        <td><h4><%= a.name %></h4>
+        <td><h4><%= link_to a.name, notices_path(category_id: a.id) %>  <%= a.count%></h4>
 		<%  a.children.each do |cat1| %>
-          <h5><%= cat1.name %>  <%= cat1.count%></h5>
+          <h5><%= link_to cat1.name, notices_path(category_id: cat1.id) %>  <%= cat1.count%></h5>
 		<% end %>  </td>
 		
 		<% if b!=nil%>
-		 <td><h4><%= b.name %></h4>
+		 <td><h4><%= link_to b.name, notices_path(category_id: b.id) %>  <%= b.count%></h4>
 		 <%  b.children.each do |cat1| %>
-          <h5><%= cat1.name %>  <%= cat1.count%></h5>
+          <h5><%= link_to cat1.name, notices_path(category_id: cat1.id) %>  <%= cat1.count%></h5>
 		 <% end %> </td> 
 		<% end %>  
 		
 		 <% if c!=nil%>
-		  <td><h4><%= c.name %></h4>
+		  <td><h4><%= link_to c.name, notices_path(category_id: c.id) %>  <%= c.count%></h4>
 		<%  c.children.each do |cat1| %>
-          <h5><%= cat1.name %>  <%= cat1.count%></h5>
+          <h5><%= link_to cat1.name, notices_path(category_id: cat1.id) %>  <%= cat1.count%></h5>
 		 <% end %>  </td>
 		<% end %>   
       </tr>
