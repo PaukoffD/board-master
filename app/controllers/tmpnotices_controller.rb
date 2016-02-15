@@ -21,6 +21,21 @@ class TmpnoticesController < ApplicationController
   end
 
    def indextmp
+   for j in 0..params[:notice_ids].length-1
+    notice=Notice.new
+    i=params[:notice_ids][j].to_i
+    @tmpnotice = Tmpnotice.find(i)
+    page = Nokogiri::HTML(open(@tmpnotice.ref_page))
+	p=page.xpath("//*[contains(@class,'ob_header')]")
+	notice.notice=p.at_css("tr td h1").text
+	p=page.xpath("//*[contains(@class,'show_ob')]")
+	s=p.at_css("tr td.td1 p strong").text
+	
+	
+	
+  loa
+    end
+   
    Tmpnotice.where('id' => params[:notice_ids]).update_all({:choice => true})
    Tmpnotice.where('choice' => nil).delete_all
   #@notices = Tmpnotice.all

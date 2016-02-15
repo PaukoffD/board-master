@@ -78,17 +78,21 @@ end
       s=notice_params['category_id']
 	 end
 	else
+	# if  notice_params['category_id'].match('--')
+	#   s=notice_params['category_id'].delete('--')
+	# else   
       s=notice_params['category_id'] 
+	# end 
 	end 
  @category = Category.find_by(name: s)
   @notice.category_id= @category.id
 	
  if  params[:searchng][:w]!=""
-   c=City.new
-   c.city= params[:searchng][:w]
-   c.save
-   c=City.last
-   @notice.city_id=c.id
+   city=City.new
+   city.name= params[:searchng][:w]
+   city.save
+   city=City.last
+   @notice.city_id=city.id
  end
  
     respond_to do |format|
