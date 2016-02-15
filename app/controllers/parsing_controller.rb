@@ -8,7 +8,7 @@ require 'open-uri'
   
   
   # page = Nokogiri::HTML(open("http://msk.barahla.net/25.html"))
-    page = Nokogiri::HTML(open("http://msk.barahla.net/?page=17"))
+    page = Nokogiri::HTML(open("http://msk.barahla.net/?page=4"))
    #page2 = Nokogiri::HTML(open("http://msk.barahla.net/?page=5"))
    #page3 = Nokogiri::HTML(open("http://msk.barahla.net/?page=6"))
    #page4 = Nokogiri::HTML(open("http://msk.barahla.net/?page=7"))
@@ -71,7 +71,7 @@ require 'open-uri'
  
   @notices = Notice.moderated.all
   #puts page.at_css(".ob_rubrika").text 
-  loas
+ 
     #@topics = Topic.order(:created_at).reorder('id DESC').all.page(params[:page])
   Notice.where('id' => params[:notice_ids]).update_all({:state => "visible"})
  # Notice.where('choice' => nil).delete_all
