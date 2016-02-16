@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+</br>
+
+<div class="navbar-form navbar-right"><%= link_to 'Дать объявление', new_notice_path, :class => 'btn btn-primary' %></div>
+<h5>* все обьявления проходят модерацию...см. Правила</h5>
+
+</br>
+</br>
+
+<table class="table table-striped table-hover ">
+
+ <thead>
+    <tr>
+	<th width="7%"></th>
+	<th width="26%"><center>Объявление</center></th>
+    <th width="7"></th>
+	<th width="26%"><center>Объявление</center></th>
+	 <th width="7%"></th>
+	<th width="26%"><center>Объявление</center></th>
+     </tr>
+  </thead>
+  
+    <tbody>
+ <h4>Последние объявления</h4>
+  <% @notices.each_slice(3) do |a, b, c| %>
+ 	
+    <tr>
+     <td>
+	 <div class='icon'><%= image_tag(a.avatar.url(:thumb), class: 'avatar', :size => "80") %></div>
+	 </td>
+	  
+	  
+	  <td><h5><%= link_to h(a.notice), notice_path(a.slug) %> </h5>
+	      <h6><%= a.entry_summary %> </h6>
+		  <h6>Размещено:<%= a.created_at %></h6>
+		  <h6>    Автор: <%= a.name %></h6>
+	  </td>
+	
+	  <td>
+	
+	 <% if b!=nil%>
+	 <div class='icon'><%= image_tag(b.avatar.url(:thumb), class: 'avatar', :size => "80" ) %></div>
+	 </td>
+	  
+	  
+	  <td><h4><%= link_to h(b.notice), notice_path(b.slug) %></h4>
+         
+		  <h6>Размещено:<%= b.created_at %>  Автор: <%= b.name %></h6>
+	  </td>
+	  
+	  <% end %>
+	  
+	   <td>
+	   <% if c!=nil%>
+	    <div class='icon'><%= image_tag(c.avatar.url(:thumb), class: 'avatar', :size => "80" ) %></div>
+	 </td>
+	  
+	  
+	  <td><h4><%= link_to h(c.notice), notice_path(c.slug) %></h4>
+          
+		  <h6>Размещено:<%= c.created_at %>  Автор: <%= c.name %></h6>
+	  </td>
+	  
+	  <% end %>
+	  
+	 </tr>
+  <% end %>
+   </tbody>
+</table>
+
+<div id="tag_cloud">
+  <% tag_cloud Notice.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
+
+ <%= paginate(@notices) %>
+ 
+
+

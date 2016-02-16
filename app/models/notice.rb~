@@ -14,7 +14,8 @@ acts_as_taggable
   validates_attachment_content_type :avatar1, size: { in: 0..500.kilobytes }, :content_type => /\Aimage\/.*\Z/
   validates :notice, presence: true, length: { minimum: 5, too_short: "мало символов в заголовке" }
   validates :text, presence: true, length: { minimum: 5 }
-  
+  validates :name, presence: true
+  validates :email, presence: true
   self.per_page = 40
   
  extend FriendlyId

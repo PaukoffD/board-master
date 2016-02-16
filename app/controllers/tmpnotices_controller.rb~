@@ -37,13 +37,12 @@ class TmpnoticesController < ApplicationController
 	notice.price=s.strip.to_i
 	notice.text=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/p[2]").text
 	puts notice.text
-	#loa
+	loa
 	notice.city_id=2
 	notice.category_id=17
-	notice.name=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/p[1]").text
+	notice.name=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/p[1]/span").text
 	puts notice.name
 	notice.email=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/p[6]/a").text
-
 	puts notice.email
 	notice.save
 	

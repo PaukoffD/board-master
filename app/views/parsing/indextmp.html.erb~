@@ -39,7 +39,7 @@
 	  <h4><%= link_to h(a.notice), notice_path(a.id) %> </h4>
 	  <h6><%= link_to h(a.text), notice_path(a.id) %> </h6>
           
-	  <h6>Email:<%= a.email %>  Автор: <%= a.name %> Price: <%= a.price %></h6>
+	  <h6>Размещено:<%= a.email %>  Автор: <%= a.name %> Price: <%= a.price %></h6>
 	  </td>
 	  
 	  <td> 
@@ -59,7 +59,7 @@
 	  <td><h4><%= link_to h(b.notice), notice_path(b.id) %></h4>
           <h6><%= link_to h(b.text), notice_path(b.id) %> </h6>
           
-	  <h6>Email:<%= b.email %>  Автор: <%= b.name %> Price: <%= b.price %></h6>
+	  <h6>Размещено:<%= b.email %>  Автор: <%= b.name %> Price: <%= b.price %></h6>
 	  </td>
 	  
 	  <td> 
