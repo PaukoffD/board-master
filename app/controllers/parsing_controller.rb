@@ -8,11 +8,11 @@ require 'open-uri'
   
   
   # page = Nokogiri::HTML(open("http://msk.barahla.net/25.html"))
-    page = Nokogiri::HTML(open("http://msk.barahla.net/?page=4"))
-   #page2 = Nokogiri::HTML(open("http://msk.barahla.net/?page=5"))
-   #page3 = Nokogiri::HTML(open("http://msk.barahla.net/?page=6"))
-   #page4 = Nokogiri::HTML(open("http://msk.barahla.net/?page=7"))
-   puts page.class # => Nokogiri::HTML::Document
+   page = Nokogiri::HTML(open("http://msk.barahla.net/?page=4"))
+   page2 = Nokogiri::HTML(open("http://msk.barahla.net/?page=5"))
+   page3 = Nokogiri::HTML(open("http://msk.barahla.net/?page=6"))
+   page4 = Nokogiri::HTML(open("http://msk.barahla.net/?page=7"))
+   
    
    
    
@@ -30,8 +30,49 @@ require 'open-uri'
 	@notice.name=link.at_css(".author").text
 	
 	@notice.text=link.at_css("p[3]").text
-	puts link.at_css("p[1]").text
-	puts link.text
+	
+	@notice.save
+   end 
+   page2.css(".ob").each do |link|
+    @notice=Tmpnotice.new
+    @notice.notice=link.at_css(".ob_title").text
+	s=link.at_css(".photo_preview")
+	if !s.name="td"
+	 @notice.ref_img=link.at_css(".photo_preview img")['src']
+	end 
+	@notice.ref_page=link.at_css(".ob_descr td a")['href']
+	@notice.name=link.at_css(".author").text
+	
+	@notice.text=link.at_css("p[3]").text
+	
+	@notice.save
+   end 
+   page3.css(".ob").each do |link|
+    @notice=Tmpnotice.new
+    @notice.notice=link.at_css(".ob_title").text
+	s=link.at_css(".photo_preview")
+	if !s.name="td"
+	 @notice.ref_img=link.at_css(".photo_preview img")['src']
+	end 
+	@notice.ref_page=link.at_css(".ob_descr td a")['href']
+	@notice.name=link.at_css(".author").text
+	
+	@notice.text=link.at_css("p[3]").text
+	
+	@notice.save
+   end 
+   page4.css(".ob").each do |link|
+    @notice=Tmpnotice.new
+    @notice.notice=link.at_css(".ob_title").text
+	s=link.at_css(".photo_preview")
+	if !s.name="td"
+	 @notice.ref_img=link.at_css(".photo_preview img")['src']
+	end 
+	@notice.ref_page=link.at_css(".ob_descr td a")['href']
+	@notice.name=link.at_css(".author").text
+	
+	@notice.text=link.at_css("p[3]").text
+	
 	@notice.save
    end 
   # Категории

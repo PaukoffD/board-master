@@ -28,12 +28,25 @@ class TmpnoticesController < ApplicationController
     page = Nokogiri::HTML(open(@tmpnotice.ref_page))
 	p=page.xpath("//*[contains(@class,'ob_header')]")
 	notice.notice=p.at_css("tr td h1").text
+	puts notice.notice
 	p=page.xpath("//*[contains(@class,'show_ob')]")
 	s=p.at_css("tr td.td1 p strong").text
+	s=s.delete('Стоимость:')
+	s=s.delete('руб.')
+	puts s
+	#notice.price=s.strip.to_i
+	notice.text=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/p[3]").text
+	puts notice.text
+	loa
+	notice.city_id=2
+	notice.category_id=17
+	notice.name=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/p[1]/span").text
+	puts notice.name
+	notice.email=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/p[6]/a").text
+	puts notice.email
+	notice.save
 	
-	
-	
-  loa
+ 
     end
    
    Tmpnotice.where('id' => params[:notice_ids]).update_all({:choice => true})
