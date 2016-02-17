@@ -35,7 +35,11 @@ class TmpnoticesController < ApplicationController
 	s=s.delete('руб.')
 	puts s
 	notice.price=s.strip.to_i
-	notice.text=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/p[2]").text
+	if page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/p[2]").text.match('Район')
+	  notice.text=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/p[3]").text
+	else
+	  notice.text=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/p[2]").text
+    end	
 	puts notice.text
 	#loa
 	notice.city_id=2
@@ -44,7 +48,10 @@ class TmpnoticesController < ApplicationController
 	puts notice.name
 	notice.email=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/p[6]/a").text
 
-	puts notice.email
+	if notice.email.blank?
+	  notice.text=notice.text+"    <a href="+@tmpnotice.ref_page+">"
+	end  
+	
 	notice.save
 	
  
