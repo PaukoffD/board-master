@@ -5,15 +5,6 @@ class NoticesController < ApplicationController
     string.to_slug.normalize.to_s
  end
 
-def sitemap
-  respond_to do |format|
-   format.xml { render file: 'public/sitemaps/sitemap.xml' }
-    format.html { redirect_to root_url }
-  end
-end
-
-
-
  
   def index
    if params[:tag]

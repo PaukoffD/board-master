@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   
    root 'notices#index'
   
-  get 'sitemap' => 'notices#sitemap'
   get 'tools', to: 'tools#index'
   get 'moderate', to: 'notices#moderation'
   get 'parsing', to: 'parsing#index'

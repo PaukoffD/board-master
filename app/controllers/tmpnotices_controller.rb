@@ -49,7 +49,7 @@ class TmpnoticesController < ApplicationController
 	notice.email=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/p[6]/a").text
 
 	if notice.email.blank?
-	  notice.text=notice.text+"    <a href="+@tmpnotice.ref_page+">"
+	  notice.text=notice.text+"    Координаты здесь:  "+  @tmpnotice.ref_page.to_s  
 	end  
 	
 	notice.save
