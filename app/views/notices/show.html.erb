@@ -1,12 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+<% content_for :title, @notice.notice %>
+
 <%= render 'form1'  %>
  
 		
           
 	
-    
-
+ </br>
+</br> 
+<script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
+<div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter,evernote,linkedin,viber,whatsapp"></div>
+  
 
 
 <% if user_signed_in? %>

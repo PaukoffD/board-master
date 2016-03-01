@@ -2,7 +2,7 @@ class NoticesController < ApplicationController
   before_action :set_notice, only: [:show, :edit, :update, :destroy]
 
  def normalize_friendly_id(string)
-    string.to_slug.normalize.to_s
+    string.to_slug.normalize(transliterations: :russian).to_s
  end
 
 def sitemap
@@ -40,7 +40,7 @@ end
   end
 
  Notice.where('id' => params[:notice_ids]).update_all({:state => "visible"})
-   
+ Notice.where(:state => 'pending_review').delete_all  
 	
   end 
   

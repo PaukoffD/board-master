@@ -1,6 +1,12 @@
 class TmpnoticesController < ApplicationController
   before_action :set_notice, only: [:show, :edit, :update, :destroy]
 
+   def normalize_friendly_id(string)
+    string.to_slug.normalize(transliterations: :russian).to_s
+ end
+  
+  
+  
   # GET /notices
   # GET /notices.json
   def index
@@ -41,7 +47,7 @@ class TmpnoticesController < ApplicationController
 	  notice.text=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/p[2]").text
     end	
 	puts notice.text
-	#loa
+	
 	notice.city_id=2
 	notice.category_id=17
 	notice.name=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/p[1]").text
@@ -51,7 +57,7 @@ class TmpnoticesController < ApplicationController
 	if notice.email.blank?
 	  notice.text=notice.text+"    Координаты здесь:  "+  @tmpnotice.ref_page.to_s  
 	end  
-	
+	notice.slug= normalize_friendly_id(notice.notice)
 	notice.save
 	
  
@@ -59,14 +65,7 @@ class TmpnoticesController < ApplicationController
    
    Tmpnotice.where('id' => params[:notice_ids]).update_all({:choice => true})
    Tmpnotice.where('choice' => nil).delete_all
-  #@notices = Tmpnotice.all
-  #loading
-  #puts page.at_css(".ob_rubrika").text 
-   
-    #@topics = Topic.order(:created_at).reorder('id DESC').all.page(params[:page])
-    #topic=Topic.order(:created_at).reorder('id DESC').last
-	#@forum = Forum.find(topic.forum_id)
-	
+ 
   end
   
   
