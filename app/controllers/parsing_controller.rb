@@ -156,8 +156,8 @@ require 'open-uri'
   #puts page.at_css(".ob_rubrika").text 
  
     #@topics = Topic.order(:created_at).reorder('id DESC').all.page(params[:page])
-  Notice.where('id' => params[:notice_ids]).update_all({:state => "visible"})
- # Notice.where('choice' => nil).delete_all
+ # Notice.where('id' => params[:notice_ids]).update_all({:state => "visible"})
+  Tmpnotice.where(:state => 'pending_review').delete_all
 	
 	
 	
