@@ -44,7 +44,7 @@
 	  
 	  
 	  <td><h4><%= link_to h(b.notice), notice_path(b.slug) %></h4>
-         
+          <h6><%=  b.entry_summary %> </h6>
 		  <h6>Размещено:<%= b.created_at %>  Автор: <%= b.name %></h6>
 	  </td>
 	  
@@ -57,7 +57,7 @@
 	  
 	  
 	  <td><h4><%= link_to h(c.notice), notice_path(c.slug) %></h4>
-          
+          <h6><%= c.entry_summary %> </h6>
 		  <h6>Размещено:<%= c.created_at %>  Автор: <%= c.name %></h6>
 	  </td>
 	  

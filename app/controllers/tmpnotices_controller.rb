@@ -53,13 +53,21 @@ class TmpnoticesController < ApplicationController
 	notice.name=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/p[1]").text
 	puts notice.name
 	notice.email=page.xpath(".//*[@id='new_content']/table/tbody/tr/td[1]/table/tbody/tr[2]/td[2]/p[6]/a").text
-
+  a = Mechanize.new
+  page=a.get(@tmpnotice.ref_page.to_s) do |page|
+  #page.links.each do |link|
+  # puts link.text
+  #end
+  #page1 = page.link_with(:text => 'показать номер').click
+  #puts page1
+  page1 = a.click(page.link_with(:text => "показать номер"))
+  #loa
 	if notice.email.blank?
 	  notice.text=notice.text+"    Координаты здесь:  "+  @tmpnotice.ref_page.to_s  
 	end  
 	notice.slug= normalize_friendly_id(notice.notice)
 	notice.save
-	
+	end
  
     end
    
