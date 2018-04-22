@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<%= javascript_pack_tag 'notice'%>
 </br>
 
 <div class="navbar-form navbar-right"><%= link_to 'Дать объявление', new_notice_path, :class => 'btn btn-primary' %></div>
@@ -7,7 +7,17 @@
 </br>
 </br>
 
-<table class="table table-striped table-hover ">
+  <%= content_tag :div,
+                  id: "notice-form",
+                  data: {
+                      notices: @notices.to_json(except: [:created_at, :updated_at])
+                  } do %>
+
+    <Notice> hello {{ notices }}</Notice>
+
+<% end %>
+
+<!--<table class="table table-striped table-hover ">
 
  <thead>
     <tr>
@@ -22,61 +32,59 @@
   
     <tbody>
  <h4>Последние объявления</h4>
-  <% @notices.each_slice(3) do |a, b, c| %>
+  <%# @notices.each_slice(3) do |a, b, c| %>
  	
     <tr>
      <td>
-	 <div class='icon'><%= image_tag(a.avatar.url(:thumb), class: 'avatar', :size => "80") %></div>
+	 <div class='icon'><%#= image_tag(a.avatar.url(:thumb), class: 'avatar', :size => "80") %></div>
 	 </td>
 	  
 	  
-	  <td><h5><%= link_to h(a.notice), notice_path(a.slug),title: a.notice  %> </h5>
-	      <h6><%= a.entry_summary %> </h6>
-		  <h6>Размещено:<%= a.created_at %></h6>
-		  <h6>    Автор: <%= a.name %></h6>
+	  <td><h5><%#= link_to h(a.notice), notice_path(a.slug),title: a.notice  %> </h5>
+	      <h6><%#= a.entry_summary %> </h6>
+		  <h6>Размещено:<%#= a.created_at %></h6>
+		  <h6>    Автор: <%#= a.name %></h6>
 	  </td>
 	
 	  <td>
 	
-	 <% if b!=nil%>
-	 <div class='icon'><%= image_tag(b.avatar.url(:thumb), class: 'avatar', :size => "80" ) %></div>
+	 <%# if b!=nil%>
+	 <div class='icon'><%#= image_tag(b.avatar.url(:thumb), class: 'avatar', :size => "80" ) %></div>
 	 </td>
 	  
 	  
-	  <td><h4><%= link_to h(b.notice), notice_path(b.slug), title: b.notice %></h4>
-          <h6><%=  b.entry_summary %> </h6>
-		  <h6>Размещено:<%= b.created_at %>  Автор: <%= b.name %></h6>
+	  <td><h4><%#= link_to h(b.notice), notice_path(b.slug), title: b.notice %></h4>
+          <h6><%#=  b.entry_summary %> </h6>
+		  <h6>Размещено:<%#= b.created_at %>  Автор: <%#= b.name %></h6>
 	  </td>
 	  
-	  <% end %>
+	  <%# end %>
 	  
 	   <td>
-	   <% if c!=nil%>
-	    <div class='icon'><%= image_tag(c.avatar.url(:thumb), class: 'avatar', :size => "80" ) %></div>
+	   <%# if c!=nil%>
+	    <div class='icon'><%#= image_tag(c.avatar.url(:thumb), class: 'avatar', :size => "80" ) %></div>
 	 </td>
 	  
 	  
-	  <td><h4><%= link_to h(c.notice), notice_path(c.slug), title: c.notice %></h4>
-          <h6><%= c.entry_summary %> </h6>
-		  <h6>Размещено:<%= c.created_at %>  Автор: <%= c.name %></h6>
+	  <td><h4><%#= link_to h(c.notice), notice_path(c.slug), title: c.notice %></h4>
+          <h6><%#= c.entry_summary %> </h6>
+		  <h6>Размещено:<%#= c.created_at %>  Автор: <%#= c.name %></h6>
 	  </td>
 	  
-	  <% end %>
+	  <%# end %>
 	  
 	 </tr>
-  <% end %>
+  <%# end %>
    </tbody>
 </table>
 <div class="container">
 <div class="row">
 <div id="tag_cloud" class="col-sm-12" >
-  <% tag_cloud Notice.tag_counts, %w[s m l] do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-  <% end %>
+  <%# tag_cloud Notice.tag_counts, %w[s m l] do |tag, css_class| %>
+    <%#= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <%# end %>
 </div>
 </div>
 </div>
- <%= paginate(@notices) %>
- 
-
-
+ <%#= paginate(@notices) %>
+-->
